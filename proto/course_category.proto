@@ -4,6 +4,11 @@ package pb;
 
 option go_package = "internal/pb";
 
+
+message Blank {
+
+}
+
 message Category {
     string id = 1;
     string name = 2;
@@ -15,10 +20,15 @@ message CreateCategoryRequest{
     string description = 2;
 }
 
+message CategoryList{
+    repeated Category categories = 1;
+}
+
 message CategoryResponse {
     Category category = 1;
 }
 
 service CategoryService {
-    rpc CreateCategory (CreateCategoryRequest) returns (CategoryResponse) {}
+    rpc CreateCategory (CreateCategoryRequest) returns (Category) {}
+    rpc ListCategories (Blank) returns (CategoryList) {}
 }
