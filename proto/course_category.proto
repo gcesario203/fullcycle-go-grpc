@@ -34,6 +34,7 @@ message CategoryResponse {
 
 service CategoryService {
     rpc CreateCategory (CreateCategoryRequest) returns (Category) {}
+    rpc CreateCategoryStream (stream CreateCategoryRequest) returns (CategoryList) {}
     rpc ListCategories (Blank) returns (CategoryList) {}
     rpc FindCategoryById (FindCategoryByIdRequest) returns (Category) {}
 }
